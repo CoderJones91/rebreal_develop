@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/dist/js/index.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="dist/css/main.css" />
+    <link rel="icon" href="dist/img/favicon.ico" type="icon" />
+    <title>RebReal Development</title>
+  </head>
+  <body>
+    <script>
+      document.body.className += " fade-out";
+    </script>
+    <header>
+      <h2>RebReal Development</h2>
+
+      <nav>
+        <li><a class="hvr-underline-from-center" href="#about">About</a></li>
+        <li>
+          <a class="hvr-underline-from-center" href="#contact">Contact</a>
+        </li>
+      </nav>
+
+      <nav class="mobile-btn">
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+      </nav>
+    </header>
+    <main>
+      <section id="hero">
+        <img src="./dist/img/rebreal_logo_tm.png" alt="rr-logo" />
+        <h3>
+          Welcome to RebReal Development<br />Where we specialize in turning
+          nothing into something
+        </h3>
+        <button class="hero-btn hvr-float-shadow" onclick="window.location.href = '#contact';">Rise With Us</button>
+      </section>
+      <section id="about">
+        <h1>test</h1>
+      </section>
+      <section>
+        <div class="about-blocks">
+          <div class="about-content">
+            <h2>About</h2>
+            <div class="hr-bar"></div>
+            <p>
+              RebReal Development is currently a one-man team and is a one-stop shop for all of your Web needs. We specialize in Website Development/Design, Social Media Management, and Marketing Videography. RebReal is based in the heart of Colorado Springs, CO near the downtown area.
+            </p>
+          </div>
+          <div class="about-img"></div>
+        </div>
+      </section>
+      <section id="services">
+        <div class="services-blocks">
+          <div class="services-content">
+            <h2>Services</h2>
+            <div class="hr-bar"></div>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, ad
+              ea vitae odit, aut iure natus a labore accusamus fugit, distinctio
+              libero? Dolores est error deserunt quaerat expedita impedit
+              sapiente.
+            </p>
+          </div>
+          <div class="services-img"></div>
+        </div>
+      </section>
+      <section id="img-block">
+        <div class="dark-overlay"></div>
+      </section>
+      <section id="contact">
+        <div class="sec-contain">
+          <h2>Get In Touch!</h2>
+          <div class="hr-bar-center"></div>
+          <form action="">
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <fieldset>
+              <legend>Service(s) You Need</legend>
+              
+                <input
+                  type="checkbox"
+                  name="web-dev"
+                  value="Website Development"
+                  id="web-dev"
+                />
+                <label for="web-dev">Website Developemt</label>
+                <input
+                  type="checkbox"
+                  name="web-mang"
+                  value="Website Management"
+                  id="web-mang"
+                />
+                <label for="web-mang">Website Management</label>
+                <input
+                  type="checkbox"
+                  name="soc-med"
+                  value="Social Media Management"
+                  id="soc-med"
+                />
+                <label for="soc-med">Website Hosting</label>
+                <div class="spacer-2x"></div>
+                <input
+                  type="checkbox"
+                  name="soc-med"
+                  value="Social Media Management"
+                  id="soc-med"
+                />
+                <label for="soc-med">Social Media Management</label>
+                <input
+                  type="checkbox"
+                  name="logo-design"
+                  value="Logo/Branding Design"
+                  id="logo-design"
+                />
+                <label for="logo-design">Logo/Branding Design</label>
+                <input
+                  type="checkbox"
+                  name="vid"
+                  value="Videography"
+                  id="vid"
+                />
+                <label for="vid">Videography</label>
+              
+              
+            </fieldset>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              placeholder="Enter Your Comment"
+            ></textarea>
+            <button><i class="fa fa-paper-plane"></i> Submit</button>
+          </form>
+        </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="social">
+        <i class="foab fa-facebook fa-2x"></i>
+        <i class="fab fa-twitter fa-2x"></i>
+        <i class="fab fa-instagram fa-2x"></i>
+      </div>
+      Copyright &copy; 2019 | Developed by RebReal
+    </footer>
+  </body>
+</html>
