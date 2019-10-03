@@ -1,3 +1,49 @@
+<?php
+/* Email input from a live contact form to your desired email address through a SMTP and access to your Gmail account of choice. */
+$msg = '';
+if (array_key_exists('email', $_POST)) {
+    date_default_timezone_set('Etc/UTC');
+    require 'phpmailer/PHPMailerAutoload.php';
+    $mail = new PHPMailer;
+    //Tell PHPMailer to use SMTP - requires a local mail server so don't use
+    $mail->isSMTP();
+    // 0 = off // 1 = client messages // 2 = client and server messages
+    //$mail->SMTPDebug = 2;
+    $mail->Debugoutput = 'html';
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587;
+    $mail->SMTPSecure = 'tsl';
+    $mail->SMTPAuth = true;
+    // This is the Gmail account that will be used for the tranfer (middle-man)
+    $mail->Username = "acjones0391@gmail.com";
+    // Password to the Gmail account above. Can use a pass generated for app instead.
+    $mail->Password = "dtodlbpbieamlxqu";
+    // Set as the same email address you just gave up the password to up above.
+    $mail->setFrom('acjones0391@gmail.com', 'RebReal Development');
+    // Where do you want the message to be sent?
+    $mail->addAddress('anthony@rebrealdevelopment.com', 'Mr. Jones');
+    if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
+        // Edit the Subject line below, as desired
+        $mail->Subject = 'RebReal Development - Contact Form Submission';
+        $mail->isHTML(false);
+        // If your form has other fields, add them below. ie: Phone: {$_POST['phone']}
+        $mail->Body = <<<EOT
+Email: {$_POST['email']}
+Name: {$_POST['name']}
+EOT;
+        //Send the message, check for errors
+        if (!$mail->send()) {
+            $msg = 'Sorry, something went wrong. Please try again later.';
+        } else {
+          // JS popup alert to let user know the message was sent.
+          header('Location: thank-you.html');
+        }
+    } else {
+        $msg = 'Invalid email address, message ignored.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,18 +79,22 @@
     </script>
     <header>
       <h2>RebReal Development</h2>
+      <h2 class="mobile-head-h2">RebReal Dev</h2>
 
       <nav>
+        <div class="nav-links">
         <li><a class="hvr-underline-from-center" href="#about">About</a></li>
         <li>
           <a class="hvr-underline-from-center" href="#contact">Contact</a>
         </li>
-      </nav>
+      </div>
+      
 
-      <nav class="mobile-btn">
+      <div class="mobile-btn">
         <div class="btn-line"></div>
         <div class="btn-line"></div>
-      </nav>
+      </div>
+    </nav>
     </header>
     <main>
       <section id="hero">
@@ -76,10 +126,7 @@
             <h2>Services</h2>
             <div class="hr-bar"></div>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, ad
-              ea vitae odit, aut iure natus a labore accusamus fugit, distinctio
-              libero? Dolores est error deserunt quaerat expedita impedit
-              sapiente.
+              As mentioned above our specialities are Web Developmnet/Design, Social Media Management, and Marketing Videography, but our services also include Website Hosting, Logo/Branding, and Website Management. Looking forward to talking to you soon! 
             </p>
           </div>
           <div class="services-img"></div>
@@ -88,13 +135,20 @@
       <section id="img-block">
         <div class="dark-overlay"></div>
       </section>
+      <section class="contact">
+
+      </section>
       <section id="contact">
         <div class="sec-contain">
           <h2>Get In Touch!</h2>
           <div class="hr-bar-center"></div>
-          <form action="">
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
+           <!-- Add this bit of PHP, just before your '<form' line -->
+           <?php if (!empty($msg)) {
+                          echo "<h2>$msg</h2>";
+                        } ?>
+           <form method="post" autocomplete="off">
+            <input type="text" name="name" placeholder="Name" />
+            <input type="email" name="email" placeholder="Email" />
             <fieldset>
               <legend>Service(s) You Need</legend>
               
@@ -114,11 +168,11 @@
                 <label for="web-mang">Website Management</label>
                 <input
                   type="checkbox"
-                  name="soc-med"
-                  value="Social Media Management"
-                  id="soc-med"
+                  name="web-host"
+                  value="Website Hosting"
+                  id="web-host"
                 />
-                <label for="soc-med">Website Hosting</label>
+                <label for="web-host">Website Hosting</label>
                 <div class="spacer-2x"></div>
                 <input
                   type="checkbox"
@@ -158,11 +212,16 @@
     </main>
     <footer>
       <div class="social">
-        <i class="foab fa-facebook fa-2x"></i>
-        <i class="fab fa-twitter fa-2x"></i>
-        <i class="fab fa-instagram fa-2x"></i>
+        <a href="https://www.facebook.com/rebrealdev/" class="soc-icons"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/rebrealdev" class="soc-icons"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:anthony@rebrealdevelopment.com" class="soc-icons"><i class="fa fa-envelope"></i></a>
+        
+        <a href="https://www.instagram.com/rebrealdev/" class="soc-icons"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.pinterest.com/rebrealdevelopment/" class="soc-icons"><i class="fab fa-pinterest"></i></a>
       </div>
       Copyright &copy; 2019 | Developed by RebReal
     </footer>
+  <script src="/dist/js/index.js"></script> 
+  <script src="/dist/js/app.js"></script>
   </body>
 </html>

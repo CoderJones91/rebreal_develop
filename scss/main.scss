@@ -33,6 +33,9 @@ header {
   width: 100%;
   z-index: 10000;
 }
+header .mobile-head-h2 {
+  display: none;
+}
 nav {
   list-style: none;
   display: inline-flex;
@@ -44,23 +47,28 @@ nav a {
   margin: auto 1rem;
   color: #000;
 }
+.nav-links {
+  display: flex;
+}
 main {
   text-align: center;
   margin: 0;
   padding: 0;
   font-family: Roboto;
+  overflow: hidden;
 }
 // Hero Section
 #hero {
   background-color: #fff;
-  height: 65vh;
+  height: 75vh;
   padding: 4rem;
   margin: 0;
 }
 #hero img {
-  width: 20vw;
+  width: 25vw;
   border-radius: 30%;
   margin-bottom: -0.9rem;
+  margin-top: 2.7rem;
 }
 #hero h3 {
   line-height: 2rem;
@@ -159,8 +167,8 @@ main {
   background-color: #fff;
   color: #000;
   background-size: cover;
-  margin: 0;
-  padding: 2rem;
+  margin: -1.5rem;
+  padding: 1.5rem;
   height: 100%;
   font-weight: 500;
   font-size: 1rem;
@@ -278,11 +286,26 @@ textarea {
   color: #fff;
   background-color: #000;
 }
+// Footer
 footer {
   text-align: center;
   color: #fff;
   background-color: $primary-color;
   padding: 1.5rem;
+}
+.social {
+  margin: 0.7rem auto;
+}
+.soc-icons {
+  margin: auto 0.3rem;
+  color: #fff;
+  transition: 0.5s;
+}
+.soc-icons:hover {
+  color: $secondary-color;
+}
+footer i {
+  font-size: 1.5rem;
 }
 
 // Mobile Style Import
